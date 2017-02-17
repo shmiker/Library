@@ -8,7 +8,11 @@ import java.util.Date;
 public class BaseBook {
     private String title;
     private Date dateOfIssue;
+    private int countOfReaders;
 
+    public void addCountOfReaders(){
+        countOfReaders++;
+    }
     BaseBook(String title, Date date){
         this.title = title;
         dateOfIssue = date;

@@ -10,6 +10,8 @@ public class LibraryClient {
     private int countOfBooks;
     private String name;
     private Date dateOfBirth;
+    private int countOfHistoryBooks;
+    private BaseBook[] historyBookList = new BaseBook[100];
 
     public static void main(String[] args) {
         LibraryClient client = new LibraryClient();
@@ -29,14 +31,31 @@ public class LibraryClient {
 
     }
 
-    public void addBook(BaseBook b) {
-        // проверить есть ли книга с названием уже в currentBookList и если есть, то можно добавлять
-        //if (){}
+    public String getName() {
+        return name;
+    }
 
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public BaseBook[] getCurrentBookList() {
+        return currentBookList;
+    }
+
+    public int getCountOfHistoryBooks(){
+        return countOfHistoryBooks;
+    }
+
+    public void addBook(BaseBook b) {
 
         if (countTitlesInCurrentBookist() < 3) {
             currentBookList[countOfBooks] = b;
             countOfBooks++;
+            historyBookList[countOfHistoryBooks] = b;
+            countOfHistoryBooks++;
+            b.addCountOfReaders();
+
         } else
             System.out.println("Client already has 3 books/journals");
     }
