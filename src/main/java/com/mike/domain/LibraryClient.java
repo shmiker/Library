@@ -13,22 +13,9 @@ public class LibraryClient {
     private int countOfHistoryBooks;
     private BaseBook[] historyBookList = new BaseBook[100];
 
-    public static void main(String[] args) {
-        LibraryClient client = new LibraryClient();
-        BaseBook book1 = new BaseBook("book#1", null);
-        BaseBook book2 = new BaseBook("book#1", null);
-        BaseBook book3 = new BaseBook("book#4", null);
-        BaseBook book4 = new BaseBook("book#4", null);
-        BaseBook book5 = new BaseBook("book#4", null);
-
-        client.currentBookList[0] = book1;
-        client.currentBookList[1] = book2;
-        client.currentBookList[2] = book3;
-        client.currentBookList[3] = book4;
-        client.currentBookList[4] = book5;
-
-        client.countTitlesInCurrentBookist();
-
+    public LibraryClient(String name, Date dateOfBirth){
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getName() {
@@ -49,7 +36,7 @@ public class LibraryClient {
 
     public void addBook(BaseBook b) {
 
-        if (countTitlesInCurrentBookist() < 3) {
+        if (countTitlesInCurrentBookist() <= 3) {
             currentBookList[countOfBooks] = b;
             countOfBooks++;
             historyBookList[countOfHistoryBooks] = b;

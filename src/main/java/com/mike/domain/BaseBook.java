@@ -6,9 +6,9 @@ import java.util.Date;
  * Created by mike on 26.01.2017.
  */
 public class BaseBook {
-    private String title;
-    private Date dateOfIssue;
-    private int countOfReaders;
+    protected String title;
+    protected Date dateOfIssue;
+    protected int countOfReaders;  // private or protected: вопрос по конструктору в наследниках
 
     public void addCountOfReaders(){
         countOfReaders++;

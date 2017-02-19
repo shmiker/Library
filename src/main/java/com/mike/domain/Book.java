@@ -8,4 +8,9 @@ import java.util.Date;
 public class Book extends BaseBook {
     private String id;
 
+    public Book(String title, Date dateOfIssue){
+        this.title = title;
+        this.dateOfIssue = dateOfIssue;
+    }
+
 }
