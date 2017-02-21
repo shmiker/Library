@@ -8,7 +8,8 @@ import java.util.Date;
 public class BaseBook {
     protected String title;
     protected Date dateOfIssue;
-    protected int countOfReaders;  // private or protected: вопрос по конструктору в наследниках
+    protected int countOfReaders;
+    protected int validAge; // private or protected: вопрос по конструктору в наследниках
 
     public void addCountOfReaders(){
         countOfReaders++;
@@ -18,6 +19,9 @@ public class BaseBook {
         dateOfIssue = date;
     }
 
+    public int getValidAge(){
+        return validAge;
+    }
     BaseBook(){
 
     }

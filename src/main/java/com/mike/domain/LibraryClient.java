@@ -11,11 +11,13 @@ public class LibraryClient {
     private String name;
     private Date dateOfBirth;
     private int countOfHistoryBooks;
+    private int age;
     private BaseBook[] historyBookList = new BaseBook[100];
 
-    public LibraryClient(String name, Date dateOfBirth){
+    public LibraryClient(String name, Date dateOfBirth, int age){
         this.name = name;
         this.dateOfBirth = dateOfBirth;
+        this.age = age;
     }
 
     public String getName() {
@@ -30,13 +32,26 @@ public class LibraryClient {
         return currentBookList;
     }
 
+    public String printTitleFromCurrentBookList(){
+        for (int i = 0; i < currentBookList.length; i++){
+            if (currentBookList[i] != null){
+                System.out.println(currentBookList[i].getTitle());
+            }
+        }
+        return null;
+    }
+
     public int getCountOfHistoryBooks(){
         return countOfHistoryBooks;
     }
 
-    public void addBook(BaseBook b) {
+    public int getAge(){
+        return age;
+    }
 
-        if (countTitlesInCurrentBookist() <= 3) {
+    public void addBook(BaseBook b, LibraryClient c) {
+
+        if (countTitlesInCurrentBookist() <= 3 && c.getAge() >= b.getValidAge()) {
             currentBookList[countOfBooks] = b;
             countOfBooks++;
             historyBookList[countOfHistoryBooks] = b;
@@ -44,7 +59,7 @@ public class LibraryClient {
             b.addCountOfReaders();
 
         } else
-            System.out.println("Client already has 3 books/journals");
+            System.out.println("Client already has 3 books/journals or has non valid age");
     }
 
     public int countTitlesInCurrentBookist() {

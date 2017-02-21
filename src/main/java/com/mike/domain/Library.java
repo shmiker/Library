@@ -1,8 +1,5 @@
 package com.mike.domain;
 
-import java.util.Arrays;
-import java.util.Date;
-
 /**
  * Created by mike on 15.02.2017.
  */
@@ -12,25 +9,25 @@ public class Library {
 
     public static void main(String[] args) {
 
-        BaseBook book1 = new Book("book#1", null);
-        BaseBook book2 = new Book("book#2", null);
-        BaseBook book3 = new Book("book#2", null);
-        BaseBook book4 = new Book("book#4", null);
-        BaseBook book5 = new Book("book#3", null);
-        BaseBook journal1 = new Journal("journal #1", null);
-        BaseBook journal2 = new Journal("journal #2", null);
-        BaseBook journal3 = new Journal("journal #3", null);
+        BaseBook book1 = new Book("book#1", null, 18);
+        BaseBook book2 = new Book("book#2", null, 16);
+        BaseBook book3 = new Book("book#2", null, 18);
+        BaseBook book4 = new Book("book#4", null, 20);
+        BaseBook book5 = new Book("book#3", null, 16);
+        BaseBook journal1 = new Journal("journal #1", null, 16);
+        BaseBook journal2 = new Journal("journal #2", null, 18);
+        BaseBook journal3 = new Journal("journal #3", null, 15);
 
-        LibraryClient petya = new LibraryClient("Petya", null);
-        petya.addBook(book2);
-        petya.addBook(journal1);
-        petya.addBook(journal2);
+        LibraryClient petya = new LibraryClient("Petya", null, 13);
+        petya.addBook(book2, petya);
+        petya.addBook(journal1, petya);
+        petya.addBook(journal2, petya);
 
 
-        LibraryClient vasya = new LibraryClient("Vasya", null);
+        LibraryClient vasya = new LibraryClient("Vasya", null, 24);
 
-        vasya.addBook(journal3);
-        vasya.addBook(book3);
+        vasya.addBook(journal3, vasya);
+        vasya.addBook(book3, vasya);
 
         Library library = new Library();
         library.listOfAllClients[0] = vasya;
@@ -47,10 +44,11 @@ public class Library {
 
     }
 
+    // проверка книг у клиента по имени
     public BaseBook[] checkAllBaseBooksAtClient(String name) {
         for (int i = 0; i < listOfAllClients.length; i++) {
-            if (listOfAllClients[i].getName().equals(name) && listOfAllClients[i] !=null) {
-                System.out.println(Arrays.toString(listOfAllClients[i].getCurrentBookList()));
+            if (listOfAllClients[i].getName().equals(name) && listOfAllClients[i] != null) {
+                listOfAllClients[i].printTitleFromCurrentBookList();
                 return listOfAllClients[i].getCurrentBookList();
             }
         }
@@ -81,7 +79,7 @@ public class Library {
         int journalCounter = 0;
         int bookCounter = 0;
         for (int i = 0; i < listOfAllBaseBooks.length; i++) {
-            if (listOfAllBaseBooks[i] instanceof Journal)  {
+            if (listOfAllBaseBooks[i] instanceof Journal) {
                 journalCounter++;
             } else if (listOfAllBaseBooks[i] instanceof Book)
                 bookCounter++;

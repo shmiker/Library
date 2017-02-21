@@ -7,9 +7,11 @@ import java.util.Date;
  */
 public class Journal extends BaseBook {
     private int id;
+    public int validAge;
 
-    public Journal(String title, Date dateOfIssue){
+    public Journal(String title, Date dateOfIssue, int validAge){
         this.title = title;
         this.dateOfIssue = dateOfIssue;
+        this.validAge = validAge;
     }
 }
