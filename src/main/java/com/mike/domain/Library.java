@@ -9,6 +9,7 @@ public class Library {
 
     public static void main(String[] args) {
 
+        
         BaseBook book1 = new Book("book#1", null, 18);
         BaseBook book2 = new Book("book#2", null, 16);
         BaseBook book3 = new Book("book#2", null, 18);
