@@ -10,8 +10,6 @@ public class Book extends BaseBook {
     private int validAge;
 
     public Book(String title, Date dateOfIssue, int validAge){
-        this.title = title;
-        this.dateOfIssue = dateOfIssue;
-        this.validAge = validAge;
+        super(title, dateOfIssue, validAge);
     }
 }

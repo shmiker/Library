@@ -6,17 +6,18 @@ import java.util.Date;
  * Created by mike on 26.01.2017.
  */
 public class BaseBook {
-    protected String title;
-    protected Date dateOfIssue;
-    protected int countOfReaders;
-    protected int validAge; // private or protected: вопрос по конструктору в наследниках
+    private String title;
+    private Date dateOfIssue;
+    private int countOfReaders;
+    private int validAge;
 
     public void addCountOfReaders(){
         countOfReaders++;
     }
-    BaseBook(String title, Date date){
+    BaseBook(String title, Date date, int validAge){
         this.title = title;
         dateOfIssue = date;
+        this.validAge = validAge;
     }
 
     public int getValidAge(){

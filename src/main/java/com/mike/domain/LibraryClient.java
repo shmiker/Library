@@ -10,7 +10,7 @@ public class LibraryClient {
     private int countOfBooks;
     private String name;
     private Date dateOfBirth;
-    private int countOfHistoryBooks;
+    private int countOfHistoryBooks; // для задания на выявление самого читающего клиента
     private int age;
     private BaseBook[] historyBookList = new BaseBook[100];
 
@@ -49,9 +49,9 @@ public class LibraryClient {
         return age;
     }
 
-    public void addBook(BaseBook b, LibraryClient c) {
+    public void addBook(BaseBook b) {
 
-        if (countTitlesInCurrentBookist() <= 3 && c.getAge() >= b.getValidAge()) {
+        if (countTitlesInCurrentBookist() <= 3 & getAge() >= b.getValidAge()) {
             currentBookList[countOfBooks] = b;
             countOfBooks++;
             historyBookList[countOfHistoryBooks] = b;

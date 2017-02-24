@@ -18,16 +18,16 @@ public class Library {
         BaseBook journal2 = new Journal("journal #2", null, 18);
         BaseBook journal3 = new Journal("journal #3", null, 15);
 
-        LibraryClient petya = new LibraryClient("Petya", null, 13);
-        petya.addBook(book2, petya);
-        petya.addBook(journal1, petya);
-        petya.addBook(journal2, petya);
+        LibraryClient petya = new LibraryClient("Petya", null, 20);
+        petya.addBook(book2);
+        petya.addBook(journal1);
+        petya.addBook(journal2);
 
 
         LibraryClient vasya = new LibraryClient("Vasya", null, 24);
 
-        vasya.addBook(journal3, vasya);
-        vasya.addBook(book3, vasya);
+        vasya.addBook(journal3);
+        vasya.addBook(book3);
 
         Library library = new Library();
         library.listOfAllClients[0] = vasya;
@@ -40,7 +40,8 @@ public class Library {
         library.listOfAllBaseBooks[7] = journal3;
 
         library.checkTheMostReadingBaseBooks();
-        library.checkAllBaseBooksAtClient("Vasya");
+        library.checkAllBaseBooksAtClient("Petya");
+        maxcount(library.listOfAllClients);
 
     }
 
@@ -55,23 +56,20 @@ public class Library {
         return null;
     }
 
-    // вывести кто больше всего книг(газет) прочел // TODO CHECK
+    // вывести кто больше всего книг(газет) прочел //
 
-//    public String maxcount() {
-//        int maxcount = 0;
-//        for (int i = 0; i < listOfAllClients.length; i++) {
-//            if (listOfAllClients[i].getCountOfHistoryBooks() > maxcount) {
-//                maxcount = listOfAllClients[i].getCountOfHistoryBooks();
-//            }
-//        } // почему прерывается и не заходит в следующий for?
-//        for (int i = 0; i < listOfAllClients.length; i++) {
-//            if (maxcount == listOfAllClients[i].getCountOfHistoryBooks()) {
-//                System.out.println(listOfAllClients[i].getName());
-//                return listOfAllClients[i].getName();
-//            }
-//        }
-//        return null;
-//    }
+    public static LibraryClient maxcount(LibraryClient[] listOfAllClients) {
+        int maxcount = 0;
+        LibraryClient c = null;
+        for (int i = 0; i < listOfAllClients.length; i++) {
+            if (listOfAllClients[i] != null && listOfAllClients[i].getCountOfHistoryBooks() > maxcount) {
+                maxcount = listOfAllClients[i].getCountOfHistoryBooks();
+                c = listOfAllClients[i];
+
+            }
+        }
+        return c;
+    }
 
 
     // вывести что больше читают - книги или газеты
