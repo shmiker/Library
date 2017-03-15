@@ -10,6 +10,7 @@ public class BaseBook {
     private Date dateOfIssue;
     private int countOfReaders;
     private int validAge;
+    private int id;
 
     public void addCountOfReaders(){
         countOfReaders++;
